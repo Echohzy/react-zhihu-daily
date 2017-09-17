@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(webpackDevMiddleware(webpack(webpackDevConfig),{
-  publicPath: './public'
+  publicPath: "http://127.0.0.1:3000/"
 }));
 app.get("/api", api);
 app.use('*', index);
