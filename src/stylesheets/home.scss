@@ -1,0 +1,19 @@
+@import "base";
+
+.home-container{
+  .tabs-container{
+    .tabs-buttons{
+      height: 60px;
+      background: $base-blue;
+      .nav-button{
+        color: $white;
+        line-height: 60px;
+        text-align: center;
+        width: 80px;
+        a{
+          color: $blue-grey;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@import "base";
+
+.tabs-container{
+  .tabs-buttons{
+    display: flex;
+  }
+  .tabs-content{
+    .tabs-item-container{
+      display: none;
+    }
+    .tabs-item-container{
+      display: block;
+    }
+  }
+}
