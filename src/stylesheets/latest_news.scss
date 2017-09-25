@@ -1,0 +1,26 @@
+@import 'base';
+
+.list-container{
+  padding: 0 10px;
+  .new-block{
+    margin-top: 10px;
+    background: $white;
+    display: flex;
+    padding: 10px;
+    box-shadow: 0 0 10px 1px rgba(0,0,0,0.1);
+    align-items: center;
+    .image-wrapper{
+      height: 100px;
+      width: 100px;
+      margin-right: 10px;
+      img{
+        height: 100px;
+        width: 100px;
+      }
+    }
+    p{
+      color: $heavy-blue;
+    }
+    
+  }
+}
