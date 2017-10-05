@@ -8,11 +8,12 @@ import { routerReducer } from "react-router-redux";
 import '../stylesheets/font-awesome.min.css';
 import '../stylesheets/style.scss';
 
-import Home from "./components/Home";
-import Article from "./components/Article";
+import HomeReducer from "./reducers/home_reducer";
+import HomeContainer from "./containers/home_container";
 
 let reducers = combineReducers({
-  routing: routerReducer
+  routing: routerReducer,
+  homeReducer: HomeReducer
 });
 
 let store = createStore(reducers, applyMiddleware(thunk));
@@ -22,8 +23,7 @@ const Root = ()=>(
     <Router >
       <div>
         <Route exact path="/" render={()=>(<Redirect to="/home"/>)} />
-        <Route exact path="/home" component={Home} />
-        <Route exact path="/news/:id" component={Article} />
+        <Route exact path="/home" component={HomeContainer} />
       </div>
     </Router>
   </Provider>
