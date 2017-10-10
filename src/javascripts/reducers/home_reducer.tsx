@@ -11,6 +11,26 @@ function latestNews(state:object = {}, action: Action){
   }
 }
 
+function hotNews(state: object[] = [], action: Action){
+  switch(action.type){
+    case RECEIVED_HOT_NEWS:
+      return action.data;
+    default:
+      return state;
+  }
+}
+
+function themes(state: object = {}, action: Action){
+  switch(action.type){
+    case RECEIVED_THEMES:
+      return action.data;
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
-  latestNews: latestNews
+  latestNews: latestNews,
+  hotNews: hotNews,
+  themes: themes
 });

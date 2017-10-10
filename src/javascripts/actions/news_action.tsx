@@ -43,3 +43,32 @@ export function fetchLatestNews(){
     })
   }
 }
+
+
+export function fetchHotNews(){
+  return (dispatch: any, getState: object)=>{
+    return axios.get("/api?uri=https://news-at.zhihu.com/api/3/news/hot").then((response)=>{
+      return response.data;
+    }).then((res)=>{
+      if(res.status === "success"){
+        dispatch(receivedHotNews(res.data.recent));
+      }
+    }).catch(()=>{
+      
+    })
+  }
+}
+
+export function fetchThemes(){
+  return (dispatch: any, getState: object)=>{
+    return axios.get("/api?uri=https://news-at.zhihu.com/api/4/themes").then((response)=>{
+      return response.data;
+    }).then((res)=>{
+      if(res.others){
+        dispatch(receivedThemes(res.others));
+      }
+    }).catch(()=>{
+      
+    })
+  }
+}

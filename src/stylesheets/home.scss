@@ -21,6 +21,12 @@
     }
     .tabs-content{
       padding-top: 60px;
+      .tabs-item-container{
+        display: none;
+      }
+      .tabs-item-container.active{
+        display: block;
+      }
     }
   }
 }

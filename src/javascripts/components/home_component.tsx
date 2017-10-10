@@ -2,12 +2,17 @@ import * as React from "react";
 import Tabs, { TabItem } from './Tabs';
 import { Link } from 'react-router-dom';
 import LatestList from './latest_list';
+import HotList, { HotNew } from './hot_list';
 import "../../stylesheets/home.scss";
 
 interface HomeProps {
-  latestNews: object;
+  latestNews: {
+    stories: object[]
+  };
+  hotNews: Array<HotNew>;
   location: any;
   getLatestNews: any;
+  getHotNews: any;
   push: any;
   replace: any;
   go: any;
@@ -19,7 +24,23 @@ export default class HomeComponent extends React.Component <HomeProps, any>{
     super(props);
   }
   componentDidMount(){
-    this.props.getLatestNews();
+    let searchType = this.getNewsType(this.props.location.search);
+    if(!searchType||searchType==="new"){
+      this.props.getLatestNews();
+    }else{
+      this.props.getHotNews();
+    }
+  }
+  componentWillReceiveProps(nextProps: HomeProps){
+    const {location} = this.props;
+    let nextSearchType=this.getNewsType(nextProps.location.search);
+    if(this.getNewsType(location.search)!==nextSearchType){
+      if(nextSearchType==="new"&&!nextProps.latestNews.stories){
+        this.props.getLatestNews();
+      }else if(nextSearchType==="hot"&&nextProps.hotNews.length===0){
+        this.props.getHotNews();
+      }
+    }
   }
   getNewsType(search: string){
     search = search.substring(1);
@@ -33,7 +54,6 @@ export default class HomeComponent extends React.Component <HomeProps, any>{
   }
   render(){
     const {location} = this.props;
-    console.log(this.getNewsType(location.search));
     return (
       <div className="home-container">
         <Tabs activeKey={this.getNewsType(location.search)||"new"}>
@@ -41,7 +61,7 @@ export default class HomeComponent extends React.Component <HomeProps, any>{
             <LatestList latestNews={this.props.latestNews} />
           </TabItem>
           <TabItem itemKey="hot" title={<Link to={{pathname:"/home", search:"?type=hot"}}>最热</Link>}>
-            <div />
+            <HotList hotNews={this.props.hotNews} />
           </TabItem>
           <TabItem itemKey="theme" title={<Link to={{pathname:"/home", search:"?type=theme"}}>主题</Link>}>
             <div />
