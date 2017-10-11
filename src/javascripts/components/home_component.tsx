@@ -3,6 +3,7 @@ import Tabs, { TabItem } from './Tabs';
 import { Link } from 'react-router-dom';
 import LatestList from './latest_list';
 import HotList, { HotNew } from './hot_list';
+import ThemeList from './theme_list';
 import "../../stylesheets/home.scss";
 
 interface HomeProps {
@@ -10,9 +11,11 @@ interface HomeProps {
     stories: object[]
   };
   hotNews: Array<HotNew>;
+  themes: object[];
   location: any;
-  getLatestNews: any;
-  getHotNews: any;
+  fetchLatestNews: any;
+  fetchHotNews: any;
+  fetchThemes: any,
   push: any;
   replace: any;
   go: any;
@@ -24,21 +27,30 @@ export default class HomeComponent extends React.Component <HomeProps, any>{
     super(props);
   }
   componentDidMount(){
-    let searchType = this.getNewsType(this.props.location.search);
-    if(!searchType||searchType==="new"){
-      this.props.getLatestNews();
-    }else{
-      this.props.getHotNews();
+    let searchType = this.getNewsType(this.props.location.search)||"new";
+    this.fetchData(searchType);
+  }
+  fetchData(type: string){
+    switch(type){
+      case "new":
+        this.props.fetchLatestNews();
+        break;
+      case "hot":
+        this.props.fetchHotNews();
+        break;
+      case "theme":
+        this.props.fetchThemes();
+        break;
+      default:
+        return;
     }
   }
   componentWillReceiveProps(nextProps: HomeProps){
     const {location} = this.props;
     let nextSearchType=this.getNewsType(nextProps.location.search);
     if(this.getNewsType(location.search)!==nextSearchType){
-      if(nextSearchType==="new"&&!nextProps.latestNews.stories){
-        this.props.getLatestNews();
-      }else if(nextSearchType==="hot"&&nextProps.hotNews.length===0){
-        this.props.getHotNews();
+      if((nextSearchType==="new"&&!nextProps.latestNews.stories)||(nextSearchType==="hot"&&nextProps.hotNews.length===0)||(nextSearchType==="theme"&&nextProps.themes.length===0)){
+        this.fetchData(nextSearchType);
       }
     }
   }
@@ -64,7 +76,7 @@ export default class HomeComponent extends React.Component <HomeProps, any>{
             <HotList hotNews={this.props.hotNews} />
           </TabItem>
           <TabItem itemKey="theme" title={<Link to={{pathname:"/home", search:"?type=theme"}}>主题</Link>}>
-            <div />
+            
           </TabItem>
         </Tabs>
       </div>

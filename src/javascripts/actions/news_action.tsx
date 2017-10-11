@@ -64,8 +64,8 @@ export function fetchThemes(){
     return axios.get("/api?uri=https://news-at.zhihu.com/api/4/themes").then((response)=>{
       return response.data;
     }).then((res)=>{
-      if(res.others){
-        dispatch(receivedThemes(res.others));
+      if(res.status==="success"){
+        dispatch(receivedThemes(res.data.others));
       }
     }).catch(()=>{
       

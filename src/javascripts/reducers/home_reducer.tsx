@@ -20,7 +20,7 @@ function hotNews(state: object[] = [], action: Action){
   }
 }
 
-function themes(state: object = {}, action: Action){
+function themes(state: object[] = [], action: Action){
   switch(action.type){
     case RECEIVED_THEMES:
       return action.data;
