@@ -3,7 +3,7 @@ import Tabs, { TabItem } from './Tabs';
 import { Link } from 'react-router-dom';
 import LatestList from './latest_list';
 import HotList, { HotNew } from './hot_list';
-import ThemeList from './theme_list';
+import ThemeList, {Theme} from './theme_list';
 import "../../stylesheets/home.scss";
 
 interface HomeProps {
@@ -11,7 +11,7 @@ interface HomeProps {
     stories: object[]
   };
   hotNews: Array<HotNew>;
-  themes: object[];
+  themes: Array<Theme>;
   location: any;
   fetchLatestNews: any;
   fetchHotNews: any;
@@ -76,7 +76,7 @@ export default class HomeComponent extends React.Component <HomeProps, any>{
             <HotList hotNews={this.props.hotNews} />
           </TabItem>
           <TabItem itemKey="theme" title={<Link to={{pathname:"/home", search:"?type=theme"}}>主题</Link>}>
-            
+            <ThemeList themes={this.props.themes}/>
           </TabItem>
         </Tabs>
       </div>
