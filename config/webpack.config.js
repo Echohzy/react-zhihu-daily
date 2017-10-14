@@ -21,7 +21,7 @@ module.exports = {
 
       { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
     
-      { test: /\.(eot|svg|ttf|woff|woff2|otf)$/, loader: "file-loader"}
+      { test: /\.(eot|svg|ttf|woff|woff2|otf)$/, loader: 'url-loader'}
       
 
     ]

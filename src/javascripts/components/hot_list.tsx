@@ -11,8 +11,6 @@ export interface HotNew {
 interface HotListProps {
   hotNews: Array<HotNew>;
 }
-
-
 export default class HotList extends React.Component<HotListProps, any> {
   constructor(props:HotListProps){
     super(props);

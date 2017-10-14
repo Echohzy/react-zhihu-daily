@@ -1,0 +1,31 @@
+@import 'base';
+
+.header-container{
+  background: $base-blue;
+  height: 60px;
+  font-size: 14px;
+  color: #fff;
+  font-size: 14px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  line-height: 60px;
+  display: flex;
+  button{
+    padding: 0;
+    height: 60px;
+    outline: none;
+    line-height: 60px;
+    width: 60px;
+    text-align: center;
+    .fa{
+      font-size: 20px;
+      color: #fff;
+    }
+    .title{
+      margin-left: 10px;
+    }
+  }
+  
+}

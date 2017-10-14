@@ -15,7 +15,7 @@ interface HomeProps {
   location: any;
   fetchLatestNews: any;
   fetchHotNews: any;
-  fetchThemes: any,
+  fetchThemes: any;
   push: any;
   replace: any;
   go: any;

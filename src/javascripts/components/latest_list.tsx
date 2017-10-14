@@ -26,7 +26,7 @@ export default class LatestList extends React.Component<LatestListProps, any> {
         {
           this.props.latestNews.stories&&this.props.latestNews.stories.map((story: StoryProps)=>{
             return (
-              <Link className="new-block" to={{pathname: "/news/"+story.id}} key={story.id}>
+              <Link className="new-block" to={{pathname: "/articles/"+story.id}} key={story.id}>
                 <div className="image-wrapper"><img src={story.images[0]} /></div>
                 <p>{story.title}</p>
               </Link>

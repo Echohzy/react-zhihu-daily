@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as PropTypes from 'prop-types';
+import '../../stylesheets/header.scss';
 
 interface Props{
   title: string,
@@ -20,7 +21,7 @@ export default class Header extends React.Component<Props> {
     return (
       <div className="header-container">
         {backButton}
-        <p>{title}</p>
+        <p className="title">{title}</p>
       </div>
     );
   }

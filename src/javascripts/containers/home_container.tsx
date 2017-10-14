@@ -12,20 +12,6 @@ function mapStateToProps(state: any){
   };
 }
 
-function mapDispatchToProps(dispatch: any, getState: any){
-  return {
-    getLatestNews: function(){
-      return dispatch(fetchLatestNews());
-    },
-    getHotNews: function(){
-      return dispatch(fetchHotNews());
-    },
-    getThemes: function(){
-      return dispatch(fetchThemes());
-    }
-  };
-}
-
 export default connect(mapStateToProps, {fetchLatestNews, fetchHotNews, fetchThemes})(connect(null, routerActions)(HomeComponent));
 
 
