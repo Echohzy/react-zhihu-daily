@@ -34,6 +34,7 @@
   }
   .article-body{
     padding: 10px;
+    border-bottom: 1px solid $border-grey;
     .content-image{
       max-width: 100%;
       margin: 10px 0;
@@ -55,6 +56,44 @@
       font-size: 16px;
       padding: 10px 0;
       font-weight: bold;
+    }
+    .view-more{
+      display: none;
+    }
+  }
+  .article-comments{
+    padding: 10px;
+    .title{
+      margin: 10px 0;
+      font-size: 20px;
+    }
+    .comment-block{
+      margin-bottom: 15px;
+      img{
+        float: left;
+        height: 36px;
+        width: 36px;
+        border-radius: 18px;
+      }
+      .comment-content{
+        margin-left: 46px;
+        font-size: 14px;
+        h1{
+          font-weight: bold;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+        .info{
+          font-size: 12px;
+          span{
+            .fa{
+              margin-right: 4px;
+            }
+            margin-right: 10px;
+          }
+        }
+      }
     }
   }
 }

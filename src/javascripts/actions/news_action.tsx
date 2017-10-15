@@ -4,8 +4,10 @@ export const RECEIVED_LATEST_NEWS = "RECEIVED_LATEST_NEWS";
 export const RECEIVED_HOT_NEWS = "RECEIVED_HOT_NEWS";
 export const RECEIVED_THEMES = "RECEIVED_THEMES";
 export const RECEIVED_ARTICLE = "RECEIVED_ARTICLE";
-export const RECEIVED_ARTICLE_COMMENT = "RECEIVED_ARTICLE_COMMENT";
+export const RECEIVED_ARTICLE_COMMENTS = "RECEIVED_ARTICLE_COMMENTS";
+export const RECEIVED_SINGLE_THEME = "RECEIVED_SINGLE_THEME";
 export const CLEAN_DATA = "CLEAN_DATA";
+
 
 export interface ListAction<T> {
   type: string;
@@ -40,14 +42,21 @@ function receivedArticle(data: object): ListAction<object>{
   };
 }
 
-function receivedArticleComment(data: object[]): ListAction<object[]>{
+function receivedArticleComments(data: object[]): ListAction<object[]>{
   return {
-    type: RECEIVED_ARTICLE_COMMENT,
+    type: RECEIVED_ARTICLE_COMMENTS,
     data: data
   };
 }
 
-function cleanDate(reducerName: string): ListAction<string>{
+function receivedSingleTheme(data: object): ListAction<object>{
+  return {
+    type: RECEIVED_SINGLE_THEME,
+    data: data
+  };
+}
+
+export function cleanData(reducerName: string): ListAction<string>{
   return {
     type: CLEAN_DATA,
     data: reducerName
@@ -110,3 +119,32 @@ export function fetchArticle(id: number){
     })
   }
 }
+
+export function fetchShortComments(id: number){
+  return (dispatch: any, getState: object)=>{
+    return axios.get("/api?uri=https://news-at.zhihu.com/api/4/story/"+id+"/short-comments").then((response)=>{
+      return response.data;
+    }).then((res)=>{
+      if(res.status==="success"){
+        dispatch(receivedArticleComments(res.data.comments));
+      }
+    }).catch(()=>{
+      
+    })
+  }
+}
+
+export function fetchSingleTheme(id: number){
+  return (dispatch: any, getState: object)=>{
+    return axios.get("/api?uri=https://news-at.zhihu.com/api/4/theme/"+id).then((response)=>{
+      return response.data;
+    }).then((res)=>{
+      if(res.status==="success"){
+        dispatch(receivedSingleTheme(res.data));
+      }
+    }).catch(()=>{
+      
+    })
+  }
+}
+

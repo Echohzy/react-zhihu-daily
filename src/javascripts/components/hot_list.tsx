@@ -21,7 +21,7 @@ export default class HotList extends React.Component<HotListProps, any> {
       {
         this.props.hotNews.map((item: HotNew)=>{
           return (
-            <Link className="new-block" to={{pathname: "/news/"+item.news_id}} key={item.news_id}>
+            <Link className="new-block" to={{pathname: "/articles/"+item.news_id}} key={item.news_id}>
               <div className="image-wrapper"><img src={item.thumbnail} /></div>
               <p>{item.title}</p>
             </Link>
