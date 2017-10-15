@@ -5,48 +5,52 @@ export const RECEIVED_HOT_NEWS = "RECEIVED_HOT_NEWS";
 export const RECEIVED_THEMES = "RECEIVED_THEMES";
 export const RECEIVED_ARTICLE = "RECEIVED_ARTICLE";
 export const RECEIVED_ARTICLE_COMMENT = "RECEIVED_ARTICLE_COMMENT";
+export const CLEAN_DATA = "CLEAN_DATA";
 
-export interface ListAction {
+export interface ListAction<T> {
   type: string;
-  data: ReadonlyArray<object>
+  data: T
 }
 
-export interface DetailAction {
-  type: string;
-  data: object
-} 
-function receivedLatestNews(data: object[]): ListAction{
+function receivedLatestNews(data: object[]): ListAction<object[]>{
   return {
     type: RECEIVED_LATEST_NEWS,
     data: data
   };
 }
 
-function receivedHotNews(data: object[]): ListAction{
+function receivedHotNews(data: object[]): ListAction<object[]>{
   return {
     type: RECEIVED_HOT_NEWS,
     data: data
   }
 }
 
-function receivedThemes(data: object[]): ListAction{
+function receivedThemes(data: object[]): ListAction<object[]>{
   return {
     type: RECEIVED_THEMES,
     data: data
   }
 }
 
-function receivedArticle(data: object): DetailAction{
+function receivedArticle(data: object): ListAction<object>{
   return {
     type: RECEIVED_ARTICLE,
     data: data
   };
 }
 
-function receivedArticleComment(data: object[]): ListAction{
+function receivedArticleComment(data: object[]): ListAction<object[]>{
   return {
     type: RECEIVED_ARTICLE_COMMENT,
     data: data
+  };
+}
+
+function cleanDate(reducerName: string): ListAction<string>{
+  return {
+    type: CLEAN_DATA,
+    data: reducerName
   };
 }
 
@@ -95,7 +99,7 @@ export function fetchThemes(){
 
 export function fetchArticle(id: number){
   return (dispatch: any, getState: object)=>{
-    return axios.get("/api?url=https://news-at.zhihu.com/api/4/news/"+id).then((response)=>{
+    return axios.get("/api?uri=https://news-at.zhihu.com/api/4/news/"+id).then((response)=>{
       return response.data;
     }).then((res)=>{
       if(res.status==="success"){

@@ -12,20 +12,22 @@
   left: 0;
   line-height: 60px;
   display: flex;
+  z-index: 999;
   button{
     padding: 0;
     height: 60px;
     outline: none;
-    line-height: 60px;
     width: 60px;
     text-align: center;
+    background: none;
+    border: none;
     .fa{
       font-size: 20px;
       color: #fff;
     }
-    .title{
-      margin-left: 10px;
-    }
+  }
+  .title{
+    margin-left: 10px;
   }
   
 }

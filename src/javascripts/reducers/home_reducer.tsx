@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { RECEIVED_LATEST_NEWS, RECEIVED_HOT_NEWS, RECEIVED_THEMES, ListAction} from '../actions/news_action';
 
 
-function latestNews(state:object = {}, action: ListAction){
+function latestNews(state:object = {}, action: ListAction<object>){
   switch(action.type){
     case RECEIVED_LATEST_NEWS:
       return action.data;
@@ -11,7 +11,7 @@ function latestNews(state:object = {}, action: ListAction){
   }
 }
 
-function hotNews(state: object[] = [], action: ListAction){
+function hotNews(state: object[] = [], action: ListAction<object[]>){
   switch(action.type){
     case RECEIVED_HOT_NEWS:
       return action.data;
@@ -20,7 +20,7 @@ function hotNews(state: object[] = [], action: ListAction){
   }
 }
 
-function themes(state: object[] = [], action: ListAction){
+function themes(state: object[] = [], action: ListAction<object[]>){
   switch(action.type){
     case RECEIVED_THEMES:
       return action.data;

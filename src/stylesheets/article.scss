@@ -1,2 +1,60 @@
 @import 'base';
 
+.article-container{
+  .article-content{
+    padding-top: 60px;
+    max-width: 600px;
+    min-width: 300px;
+    margin: 0 auto;
+    .article-title-block{
+      position: relative;
+      max-height: 375px;
+      overflow: hidden;
+      img{
+        max-width: 100%;
+      }
+      .article-title{
+        padding: 10px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        color: #fff;
+        box-sizing: border-box;
+        width: 100%;
+        .title{
+          font-size: 18px;
+          text-shadow: 1px 1px 1px #000;
+        }
+        .source{
+          font-size: 12px;
+          text-align: right;
+        }
+      }
+    }
+  }
+  .article-body{
+    padding: 10px;
+    .content-image{
+      max-width: 100%;
+      margin: 10px 0;
+    }
+    .meta{
+      display: flex;
+      align-content: center;
+      line-height: 34px;
+      font-size: 14px;
+      margin-bottom: 10px;
+      .avatar{
+        height: 34px;
+        width: 34px;
+        border-radius: 17px;
+        margin-right: 6px;
+      }
+    }
+    .question-title{
+      font-size: 16px;
+      padding: 10px 0;
+      font-weight: bold;
+    }
+  }
+}
