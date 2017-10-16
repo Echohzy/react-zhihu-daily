@@ -20,15 +20,15 @@ export default class ThemeList extends React.Component<ThemeListProps, any> {
         {
           this.props.themes.map((theme: Theme)=>{
             return (
-              <Link key={theme.id} to={{pathname: "/themes/"+theme.id}}>
-                <div className="theme-block">
+              <div className="theme-block" key={theme.id}>
+                <Link  to={{pathname: "/themes/"+theme.id}}>
                   <img src={theme.thumbnail} />
                   <div className="title">
                     <h1 title={theme.name}>{theme.name}</h1>
                     <p title={theme.description}>{theme.description}</p>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             );
           })
         }

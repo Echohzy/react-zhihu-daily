@@ -16,7 +16,13 @@
         text-align: center;
         width: 80px;
         a{
+          font-size: 14px;
           color: $blue-grey;
+        }
+      }
+      .nav-button.active{
+        a{
+          color: $white;
         }
       }
     }

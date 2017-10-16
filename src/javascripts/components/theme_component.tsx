@@ -68,14 +68,14 @@ export default class ThemeComponent extends React.Component<ThemeProps, any>{
             {
               theme.stories&&theme.stories.map((item: Theme)=>{
                 return (
-                  <Link key={item.id} to={{pathname: "/articles/"+item.id}}>
-                    <div className="theme-block">
+                  <div className="theme-block" key={item.id}>
+                    <Link to={{pathname: "/articles/"+item.id}}>
                       <img src={item.images?item.images[0]:theme.background} />
                       <div className="title">
                         <h1 title={item.title}>{item.title}</h1>
                       </div>
-                    </div>
-                  </Link>
+                    </Link>
+                  </div>
                 );
               })
             }

@@ -1,9 +1,8 @@
 @import 'base';
 
 .list-container{
-  padding: 0 10px;
+  padding: 10px;
   .new-block{
-    margin-top: 10px;
     background: $white;
     display: flex;
     padding: 10px;
@@ -22,12 +21,14 @@
       color: $heavy-blue;
     }  
   }
+  .new-block + .new-block{
+    margin-top: 10px;
+  }
   .theme-block{
     background: $white;
     border: 1px solid $blue-grey;
     border-radius: 4px;
     overflow: hidden;
-    margin: 10px 0;
     position: relative;
     height: 150px;
     img{
@@ -45,7 +46,10 @@
       h1{
         font-size: 20px;
       }
-      
     }
   }
+  .theme-block + .theme-block{
+    margin-top: 10px;
+  }
+  
 }

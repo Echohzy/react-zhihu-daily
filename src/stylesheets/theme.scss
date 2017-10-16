@@ -34,6 +34,7 @@
     }
     .theme-authors{
       display: flex;
+      padding: 0 10px;
       .avatar{
         margin: 10px 0;
         display: flex;
@@ -47,6 +48,14 @@
       }
       .avatar + .avatar{
         margin-left: 10px;
+      }
+    }
+    .list-container{
+      .theme-block{
+        img{
+          filter: blur(1px);
+        }
+        
       }
     }
   }
