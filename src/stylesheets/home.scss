@@ -15,14 +15,22 @@
         line-height: 60px;
         text-align: center;
         width: 80px;
+        background: $base-blue;
+        transition: all 1s ease-out;
         a{
           font-size: 14px;
           color: $blue-grey;
+        }
+        &:active{
+          background: $blue-grey;
         }
       }
       .nav-button.active{
         a{
           color: $white;
+        }
+        &:active{
+          background: $blue-grey;
         }
       }
     }
