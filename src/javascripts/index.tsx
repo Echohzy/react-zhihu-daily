@@ -17,13 +17,7 @@ import HomeContainer from "./containers/home_container";
 import ArticleContainer from "./containers/article_container";
 import ThemeContainer from "./containers/theme_container";
 
-
-interface Window {
-  devToolsExtension? : any;
-}
-
-
- 
+declare var DEVELOPMENT: boolean;
 const history = createBrowserHistory();
 let reducers = combineReducers({
   routing: routerReducer,
@@ -37,7 +31,7 @@ let store = createStore(
   {},
   compose(
     applyMiddleware(thunk, routerMiddleware(history)), 
-    PRODUCTION&&window.devToolsExtension ? window.devToolsExtension() : f => f
+    DEVELOPMENT&&(window as any).devToolsExtension ? (window as any).devToolsExtension() : (f:any):any => f
   )
 );
 

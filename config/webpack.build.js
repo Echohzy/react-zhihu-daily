@@ -1,15 +1,12 @@
 var path = require("path");
 var webpack = require("webpack");
-
+var UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
   entry: path.resolve(__dirname, "../src/javascripts/index.tsx"),
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "../server/public")
   },
-
-  devtool: "source-map",
-
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json", "scss", "css"]
   },
@@ -22,13 +19,12 @@ module.exports = {
       
       { test: /\.(tsx|ts)$/, loader: "awesome-typescript-loader"},
 
-      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
-
     ]
   },
   plugins: [
     new webpack.DefinePlugin({
-      "DEVELOPMENT": true
-    })
+      "DEVELOPMENT": false
+    }),
+    new UglifyJSPlugin()
   ],
 }
