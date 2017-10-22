@@ -16,6 +16,7 @@ interface HomeProps {
   fetchLatestNews: any;
   fetchHotNews: any;
   fetchThemes: any;
+  cleanData: any;
   push: any;
   replace: any;
   go: any;
@@ -25,6 +26,10 @@ interface HomeProps {
 export default class HomeComponent extends React.Component <HomeProps, any>{
   constructor(props: HomeProps){
     super(props);
+  }
+  componentWillMount(){
+    let root = document.getElementById("container");
+    root.scrollTop = 0;
   }
   componentDidMount(){
     let searchType = this.getNewsType(this.props.location.search)||"new";
@@ -63,6 +68,9 @@ export default class HomeComponent extends React.Component <HomeProps, any>{
         return match[1];
       }
     }
+  }
+  componentWillUnmount(){
+    this.props.cleanData("homeReducer");
   }
   render(){
     const {location} = this.props;

@@ -32,6 +32,10 @@ export default class ThemeComponent extends React.Component<ThemeProps, any>{
   constructor(props: ThemeProps){
     super(props);
   }
+  componentWillMount(){
+    let root = document.getElementById("container");
+    root.scrollTop = 0;
+  }
   componentDidMount(){
     this.props.fetchSingleTheme(this.props.match.params.id);
   }

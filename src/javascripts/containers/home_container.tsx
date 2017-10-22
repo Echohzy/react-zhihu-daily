@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { fetchLatestNews, fetchHotNews, fetchThemes } from '../actions/news_action';
+import { fetchLatestNews, fetchHotNews, fetchThemes, cleanData } from '../actions/news_action';
 import HomeComponent from '../components/home_component';
 import { routerActions } from 'react-router-redux';
 
@@ -12,7 +12,7 @@ function mapStateToProps(state: any){
   };
 }
 
-export default connect(mapStateToProps, {fetchLatestNews, fetchHotNews, fetchThemes})(connect(null, routerActions)(HomeComponent));
+export default connect(mapStateToProps, {fetchLatestNews, fetchHotNews, fetchThemes, cleanData})(connect(null, routerActions)(HomeComponent));
 
 
 

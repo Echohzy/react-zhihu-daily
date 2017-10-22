@@ -32,6 +32,10 @@ export default class ArticleComponent extends React.Component<ArticleProps, any>
   constructor(props: ArticleProps){
     super(props);
   }
+  componentWillMount(){
+    let root = document.getElementById("container");
+    root.scrollTop = 0;
+  }
   componentDidMount(){
     this.props.fetchArticle(this.props.match.params.id);
     this.props.fetchShortComments(this.props.match.params.id);
