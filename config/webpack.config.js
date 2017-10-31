@@ -6,7 +6,8 @@ var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlug
 module.exports = {
   entry: path.resolve(__dirname, "../src/javascripts/index.tsx"),
   output: {
-    filename: "bundle.js",
+    filename: "[name].[hash].bundle.js",
+    publicPath: "/",
     path: path.resolve(__dirname, "../server/public")
   },
 
@@ -37,7 +38,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "Template",
       inject: true,
-      template: '!!raw-loader!server/views/index.ejs'
+      template: '!!raw-loader!server/views/index-template.ejs',
+      filename: "../views/index.ejs"
     }),
     new BundleAnalyzerPlugin()
   ],
