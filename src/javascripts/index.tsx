@@ -13,10 +13,7 @@ import '../stylesheets/style.scss';
 import HomeReducer from "./reducers/home_reducer";
 import ArticleReducer from "./reducers/article_reducer";
 import ThemeReducer from "./reducers/theme_reducer";
-import HomeContainer from "./containers/home_container";
-import ArticleContainer from "./containers/article_container";
-import ThemeContainer from "./containers/theme_container";
-
+import lazyLoader from "./lazy_loader";
 declare var DEVELOPMENT: boolean;
 const history = createBrowserHistory();
 let reducers = combineReducers({
@@ -25,7 +22,7 @@ let reducers = combineReducers({
   articleReducer: ArticleReducer,
   themeReducer: ThemeReducer
 });
-
+console.log("lalalala");
 let store = createStore(
   reducers, 
   {},
@@ -35,14 +32,24 @@ let store = createStore(
   )
 );
 
+
 const Root = ()=>(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <div>
         <Route exact path="/" render={()=>(<Redirect to="/home"/>)} />
-        <Route exact path="/home" component={HomeContainer} />
-        <Route path="/articles/:id" component={ArticleContainer} />
-        <Route path="/themes/:id" component={ThemeContainer}/>
+        <Route exact path="/home" component={lazyLoader(()=>import(
+          /* webpackChunkName: "homeContainer" */
+          /* webpackMode: "lazy" */
+          "./containers/home_container"))} />
+        <Route path="/articles/:id" component={lazyLoader(()=>import(
+          /* webpackChunkName: "articleContainer" */
+          /* webpackMode: "lazy" */
+          "./containers/article_container"))} />
+        <Route path="/themes/:id" component={lazyLoader(()=>import(
+          /* webpackChunkName: "themeContainer" */
+          /* webpackMode: "lazy" */
+          "./containers/theme_container"))}/>
       </div>
     </ConnectedRouter>
   </Provider>

@@ -25,9 +25,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(webpackDevMiddleware(webpack(webpackDevConfig),{
-//   publicPath: "/"
-// }));
+app.use(webpackDevMiddleware(webpack(webpackDevConfig),{
+  publicPath: "/"
+}));
 app.get("/api", api);
 app.use('*', index);
 

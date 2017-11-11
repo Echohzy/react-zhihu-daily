@@ -3,7 +3,8 @@
         "outDir": "./server/public",
         "sourceMap": true,
         "noImplicitAny": true,
-        "module":"commonjs",
+        "moduleResolution": "node",
+        "module": "esnext",
         "target": "es6",
         "jsx": "react"
     },
