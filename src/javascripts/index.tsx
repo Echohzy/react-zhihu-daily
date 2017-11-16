@@ -22,7 +22,6 @@ let reducers = combineReducers({
   articleReducer: ArticleReducer,
   themeReducer: ThemeReducer
 });
-console.log("lalalala");
 let store = createStore(
   reducers, 
   {},

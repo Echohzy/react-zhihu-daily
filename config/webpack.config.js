@@ -7,7 +7,6 @@ var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlug
 module.exports = {
   entry: {
     index: path.resolve(__dirname, "../src/javascripts/index.tsx"),
-    lazy_loader: path.resolve(__dirname, "../src/javascripts/lazy_loader.tsx"),
     vendor: ["react", "redux", "react-router", "react-dom", "react-router-redux", "react-redux", "react-router-dom", "axios"]
   },
   output: {
@@ -37,17 +36,18 @@ module.exports = {
     }),
     new BundleAnalyzerPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor', 'runtime'],
-      minChunks: Infinity,
+     name: ['vendor', 'runtime'],
+     minChunks: Infinity,
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: "commons",
-      filename: "commons.[chunkhash:4].js",
-      minChunks: 3
+     name: "common",
+     chunks: ["index","index2", "index3"],
+     minChunks:2
     }),
     new webpack.optimize.CommonsChunkPlugin({
       children: true,
-      minChunks: 3
+      async: true,
+      minChunks: 2
     }),
     new HtmlWebpackPlugin({
       title: "Template",
