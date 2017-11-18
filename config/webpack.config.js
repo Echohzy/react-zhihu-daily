@@ -6,8 +6,8 @@ var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlug
 
 module.exports = {
   entry: {
+    vendor: ["react", "redux", "react-router", "react-dom", "react-router-redux", "react-redux", "react-router-dom", "axios"],
     index: path.resolve(__dirname, "../src/javascripts/index.tsx"),
-    vendor: ["react", "redux", "react-router", "react-dom", "react-router-redux", "react-redux", "react-router-dom", "axios"]
   },
   output: {
     filename: '[name].[chunkhash:4].js',
@@ -52,6 +52,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "Template",
       inject: true,
+      chunks: ['runtime','vendor' , 'index'],
+      chunksSortMode:'manual',
       template: '!!raw-loader!server/views/index-template.ejs',
       filename: "../views/index.ejs"
     })
