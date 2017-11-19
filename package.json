@@ -7,7 +7,8 @@
   "description": "",
   "scripts": {
     "dev": "node ./server/dev_server",
-    "build": "webpack --config config/webpack.build.js && node ./server/build_server"
+    "build": "webpack --config config/webpack.build.js && node ./server/build_server",
+    "test": "jest"
   },
   "dependencies": {
     "@types/history": "^4.6.0",
@@ -49,6 +50,7 @@
     "ejs-loader": "^0.3.0",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.30.1",
+    "jest": "^21.2.1",
     "node-sass": "^4.5.3",
     "raw-loader": "^0.5.1",
     "sass-loader": "^6.0.6",
