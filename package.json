@@ -98,6 +98,9 @@
     ],
     "setupFiles": [
       "<rootDir>/setup.tsx"
-    ]
+    ],
+    "globals": {
+      "DEVELOPMENT": true
+    }
   }
 }

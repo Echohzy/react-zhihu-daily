@@ -29,7 +29,9 @@ export default class HomeComponent extends React.Component <HomeProps, any>{
   }
   componentWillMount(){
     let root = document.getElementById("container");
-    root.scrollTop = 0;
+    if(root){
+      root.scrollTop = 0;
+    }
   }
   componentDidMount(){
     let searchType = this.getNewsType(this.props.location.search)||"new";

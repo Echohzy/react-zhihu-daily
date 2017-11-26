@@ -31,8 +31,7 @@ let store = createStore(
   )
 );
 
-
-const Root = ()=>(
+export const Root = ()=>(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <div>
